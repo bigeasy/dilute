@@ -1,0 +1,36 @@
+{
+    "name":             "dilute",
+    "version":          "9.9.9",
+    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
+    "description":      "A Strata MVCC iterator that filters the results of a Strata MVCC iterator.",
+    "url":              "http://bigeasy.github.com/riffle",
+    "keywords":
+    [
+                        "btree", "leveldb", "levelup", "binary", "mvcc",
+                        "database", "json", "b-tree", "concurrent", "persistence"
+    ],
+    "contributors":     [],
+    "homepage":         "https://github.com/bigeasy/dilute",
+    "bugs":             "https://github.com/bigeasy/dilute/issues",
+    "licenses":
+    [{
+                        "type": "Affero GPL",
+                        "url": "http://github.com/bigeasy/dilute/raw/master/COPYING"
+    }],
+    "repository":
+    {
+                        "type": "git",
+                        "url": "http://github.com/bigeasy/dilute.git"
+    },
+    "dependencies":
+    {
+    },
+    "devDependencies":
+    {
+                        "proof":              "0.0.39"
+    },
+    "scripts":
+    {
+                        "test": "proof platform win32 && proof test */*/*.t.js || t/test"
+    }
+}
