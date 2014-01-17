@@ -14,8 +14,8 @@
     "bugs":             "https://github.com/bigeasy/dilute/issues",
     "licenses":
     [{
-                        "type": "Affero GPL",
-                        "url": "http://github.com/bigeasy/dilute/raw/master/COPYING"
+                        "type": "MIT",
+                        "url": "http://github.com/bigeasy/dilute/raw/master/LICENSE"
     }],
     "repository":
     {

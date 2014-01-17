@@ -10,7 +10,7 @@ A Strata MVCC iterator that filters the results of a Strata MVCC iterator.
 
     Install:        `npm install dilute`
 
-    License:        Affero GPL 3.0
+    License:        MIT
 
 To learn everything you want to know about Dilute start here:
 
