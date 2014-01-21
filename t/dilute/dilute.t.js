@@ -1,7 +1,6 @@
 require('proof')(2, function (step, deepEqual) {
     var values = [ 0, 1, 2, 3, 5, 6, 7 ], records = [], keys = []
     var iterator = require('advance')(values, function (record, callback) {
-        console.log(arguments)
         callback(null, record, record)
     })
     var filter = require('../..')(iterator, function (key) {
