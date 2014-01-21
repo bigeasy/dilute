@@ -24,10 +24,12 @@
     },
     "dependencies":
     {
+                        "cadence":            "0.0.33"
     },
     "devDependencies":
     {
-                        "proof":              "0.0.41"
+                        "proof":              "0.0.41",
+                        "advance":            "0.0.5"
     },
     "scripts":
     {
