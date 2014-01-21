@@ -9,7 +9,9 @@ require('proof')(2, function (step, deepEqual) {
         if (key % 2 == 0) return -1
         return 0
     })
-    step(function () {
+    step([function () {
+        filter.unlock()
+    }], function () {
         step(function () {
             filter.next(step())
         }, function (record, key) {
