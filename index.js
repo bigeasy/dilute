@@ -8,7 +8,7 @@ function Dilute (iterator, filter) {
 Dilute.prototype.next = cadence(function (step) {
     step(function () {
         this._iterator.next(step())
-    }, function (record, key) {
+    }, function (record, key, size) {
         switch (this._filter(key, record)) {
         case -1:
             step(function () {
@@ -18,7 +18,7 @@ Dilute.prototype.next = cadence(function (step) {
             })
             break
         case 0:
-            step(null, record, key)
+            step(null, record, key, size)
             break
         case 1:
             break
