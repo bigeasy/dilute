@@ -9,21 +9,23 @@ Dilute.prototype.next = cadence(function (step) {
     step(function () {
         this._iterator.next(step())
     }, function (record, key, size) {
-        switch (this._filter(key, record)) {
-        case -1:
-            step(function () {
-                setImmediate(step())
-            }, function () {
-                this.next(step())
-            })
-            break
-        case 0:
-            step(null, record, key, size)
-            break
-        case 1:
-            break
-        default:
-            throw new Error('invalid return from filter')
+        if (record != null) {
+            switch (this._filter(key, record)) {
+            case -1:
+                step(function () {
+                    setImmediate(step())
+                }, function () {
+                    this.next(step())
+                })
+                break
+            case 0:
+                step(null, record, key, size)
+                break
+            case 1:
+                break
+            default:
+                throw new Error('invalid return from filter')
+            }
         }
     })
 })
