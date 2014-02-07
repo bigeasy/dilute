@@ -3,7 +3,6 @@
     "version":          "0.0.3",
     "author":           "Alan Gutierrez <alan@prettyrobots.com>",
     "description":      "A Strata MVCC iterator that filters the results of a Strata MVCC iterator.",
-    "url":              "http://bigeasy.github.com/riffle",
     "keywords":
     [
                         "btree", "leveldb", "levelup", "binary", "mvcc",
