@@ -19,10 +19,9 @@ Dilute.prototype.next = cadence(function (step) {
                 })
                 break
             case 0:
-                step(null, record, key, size)
-                break
+                return [ record, key, size ]
             case 1:
-                break
+                return []
             default:
                 throw new Error('invalid return from filter')
             }
