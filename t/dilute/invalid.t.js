@@ -5,7 +5,7 @@ require('proof')(1, function (step, equal) {
     })
     var filter = require('../..')(iterator, function () {})
     step([function () {
-        filter.unlock()
+        filter.unlock(step())
     }], function () {
         step([function () {
             filter.next(step())

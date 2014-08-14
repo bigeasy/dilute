@@ -8,7 +8,7 @@ require('proof')(3, function (step, deepEqual) {
         return 0
     })
     step([function () {
-        filter.unlock()
+        filter.unlock(step())
     }], function () {
         step(function () {
             filter.next(step())
@@ -25,6 +25,6 @@ require('proof')(3, function (step, deepEqual) {
         deepEqual(records, [ 1, 3, 5, 7 ], 'records')
         deepEqual(keys, [ 1, 3, 5, 7 ], 'keys')
         deepEqual(sizes, [ 5, 5, 5, 5 ], 'sizes')
-        iterator.unlock()
+        iterator.unlock(step())
     })
 })

@@ -1,4 +1,5 @@
-var cadence = require('cadence')
+var cadence = require('cadence'),
+    assert = require('assert')
 
 function Dilute (iterator, filter) {
     this._iterator = iterator
@@ -29,8 +30,9 @@ Dilute.prototype.next = cadence(function (step) {
     })
 })
 
-Dilute.prototype.unlock = function () {
-    this._iterator.unlock()
+Dilute.prototype.unlock = function (callback) {
+    assert.ok(callback, 'unlock now requires a callback')
+    this._iterator.unlock(callback)
 }
 
 module.exports = function (iterator, filter) {
