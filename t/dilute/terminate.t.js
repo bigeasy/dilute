@@ -18,7 +18,7 @@ require('proof')(3, function (step, deepEqual) {
                 keys.push(key)
                 sizes.push(size)
             } else {
-                step(null)
+                return [ step ]
             }
         })()
     }, function () {
