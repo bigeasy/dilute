@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Upgrade Cadence to 0.0.40. #27.
  * Upgrade Proof to 0.0.47. #26.
  * Upgrade Proof to 0.0.44. #21.
  * Upgrade Cadence to 0.0.36. #20.
