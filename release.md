@@ -1,5 +1,6 @@
 ### Issue by Issue
 
+ * Upgrade Proof to 0.0.48. #31.
  * Remove call to `setImmediate`. #30.
  * Upgrade Cadence to 0.0.41. #29.
  * Upgrade Cadence to 0.0.40. #27.
