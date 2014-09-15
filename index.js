@@ -14,8 +14,6 @@ Dilute.prototype.next = cadence(function (step) {
             switch (this._filter(key, record)) {
             case -1:
                 step(function () {
-                    setImmediate(step())
-                }, function () {
                     this.next(step())
                 })
                 break
