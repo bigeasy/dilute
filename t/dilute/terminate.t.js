@@ -1,4 +1,4 @@
-require('proof')(3, function (step, deepEqual) {
+require('proof')(3, require('cadence')(function (step, assert) {
     var values = [ 0, 1, 2, 3, 5, 6, 7 ], records = [], keys = [], sizes = []
     var iterator = require('advance')(values, function (record, callback) {
         callback(null, record, record, 5)
@@ -22,9 +22,9 @@ require('proof')(3, function (step, deepEqual) {
             }
         })()
     }, function () {
-        deepEqual(records, [ 1, 3, 5, 7 ], 'records')
-        deepEqual(keys, [ 1, 3, 5, 7 ], 'keys')
-        deepEqual(sizes, [ 5, 5, 5, 5 ], 'sizes')
+        assert(records, [ 1, 3, 5, 7 ], 'records')
+        assert(keys, [ 1, 3, 5, 7 ], 'keys')
+        assert(sizes, [ 5, 5, 5, 5 ], 'sizes')
         iterator.unlock(step())
     })
-})
+}))
