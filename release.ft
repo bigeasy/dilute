@@ -8,6 +8,7 @@ Advance is only used in testing, but it was an old version without the asynchron
 
 ### Issue by Issue
 
+ * Upgrade to Cadence Redux. #42.
  * Use a `prove` named function in tests. #41.
  * Rename main module to `dilute.js`. #40.
  * Rename `step` to `async`. #39.

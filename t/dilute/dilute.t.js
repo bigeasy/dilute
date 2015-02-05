@@ -1,4 +1,4 @@
-require('proof')(3, require('cadence')(prove))
+require('proof')(3, require('cadence/redux')(prove))
 
 function prove (async, assert) {
     var values = [ 0, 1, 2, 3, 5, 6, 7 ], records = [], keys = [], sizes = []
@@ -13,7 +13,7 @@ function prove (async, assert) {
     async([function () {
         filter.unlock(async())
     }], function () {
-        async(function () {
+        var loop = async(function () {
             filter.next(async())
         }, function (record, key, size) {
             if (record && key) {
@@ -21,7 +21,7 @@ function prove (async, assert) {
                 keys.push(key)
                 sizes.push(size)
             } else {
-                return [ async ]
+                return [ loop ]
             }
         })()
     }, function () {

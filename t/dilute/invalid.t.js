@@ -1,4 +1,4 @@
-require('proof')(1, require('cadence')(prove))
+require('proof')(1, require('cadence/redux')(prove))
 
 function prove (async, assert) {
     var values = [ 0 ]
@@ -11,7 +11,7 @@ function prove (async, assert) {
     }], function () {
         async([function () {
             filter.next(async())
-        }, function (_, error) {
+        }, function (error) {
             assert(error.message, 'invalid return from filter', 'invalid return')
         }])
     })
