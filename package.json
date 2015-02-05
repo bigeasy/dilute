@@ -16,7 +16,7 @@
                         "type": "MIT",
                         "url": "http://github.com/bigeasy/dilute/raw/master/LICENSE"
     }],
-    "name":             "dilute",
+    "main":             "dilute",
     "repository":
     {
                         "type": "git",
