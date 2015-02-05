@@ -1,14 +1,14 @@
-require('proof')(1, function (step, equal) {
+require('proof')(1, function (async, equal) {
     var values = [ 0 ]
     var iterator = require('advance')(values, function (record, callback) {
         callback(null, record, record)
     })
     var filter = require('../..')(iterator, function () {})
-    step([function () {
-        filter.unlock(step())
+    async([function () {
+        filter.unlock(async())
     }], function () {
-        step([function () {
-            filter.next(step())
+        async([function () {
+            filter.next(async())
         }, function (_, error) {
             equal(error.message, 'invalid return from filter', 'invalid return')
         }])

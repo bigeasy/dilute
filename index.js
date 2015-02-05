@@ -6,15 +6,15 @@ function Dilute (iterator, filter) {
     this._filter = filter
 }
 
-Dilute.prototype.next = cadence(function (step) {
-    step(function () {
-        this._iterator.next(step())
+Dilute.prototype.next = cadence(function (async) {
+    async(function () {
+        this._iterator.next(async())
     }, function (record, key, size) {
         if (record != null) {
             switch (this._filter(key, record)) {
             case -1:
-                step(function () {
-                    this.next(step())
+                async(function () {
+                    this.next(async())
                 })
                 break
             case 0:
