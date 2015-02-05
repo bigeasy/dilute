@@ -8,6 +8,7 @@ Advance is only used in testing, but it was an old version without the asynchron
 
 ### Issue by Issue
 
+ * Rename main module to `dilute.js`. #40.
  * Rename `step` to `async`. #39.
  * Remove `require.t.js`. #37.
  * Upgrade Proof to 0.0.50. #35.
