@@ -1,4 +1,6 @@
-require('proof')(3, require('cadence')(function (async, assert) {
+require('proof')(3, require('cadence')(prove))
+
+function prove (async, assert) {
     var values = [ 0, 1, 2, 3, 5, 6, 7 ], records = [], keys = [], sizes = []
     var iterator = require('advance')(values, function (record, callback) {
         callback(null, record, record, 5)
@@ -27,4 +29,4 @@ require('proof')(3, require('cadence')(function (async, assert) {
         assert(sizes, [ 5, 5, 5, 5 ], 'sizes')
         iterator.unlock(async())
     })
-}))
+}

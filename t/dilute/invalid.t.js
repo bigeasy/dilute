@@ -1,4 +1,6 @@
-require('proof')(1, function (async, equal) {
+require('proof')(1, require('cadence')(prove))
+
+function prove (async, assert) {
     var values = [ 0 ]
     var iterator = require('advance')(values, function (record, callback) {
         callback(null, record, record)
@@ -10,7 +12,7 @@ require('proof')(1, function (async, equal) {
         async([function () {
             filter.next(async())
         }, function (_, error) {
-            equal(error.message, 'invalid return from filter', 'invalid return')
+            assert(error.message, 'invalid return from filter', 'invalid return')
         }])
     })
-})
+}
