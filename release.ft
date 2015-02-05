@@ -8,6 +8,7 @@ Advance is only used in testing, but it was an old version without the asynchron
 
 ### Issue by Issue
 
+ * Remove `require.t.js`. #37.
  * Upgrade Proof to 0.0.50. #35.
  * Upgrade Advance to 0.0.7. #34.
  * Upgrade Cadence to 0.0.43. #33.
