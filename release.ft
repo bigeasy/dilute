@@ -8,6 +8,7 @@ Advance is only used in testing, but it was an old version without the asynchron
 
 ### Issue by Issue
 
+ * Upgrade Cadence to 0.0.52. #46.
  * Upgrade Proof to 0.0.51. #44.
  * Upgrade Advance to 0.0.9. #43.
  * Upgrade to Cadence Redux. #42.
