@@ -4,29 +4,33 @@ var cadence = require('cadence/redux'),
 function Dilute (iterator, filter) {
     this._iterator = iterator
     this._filter = filter
+    this._done = false
 }
 
-Dilute.prototype.next = cadence(function (async) {
-    async(function () {
-        this._iterator.next(async())
-    }, function (record, key, size) {
-        if (record != null) {
-            switch (this._filter(key, record)) {
-            case -1:
-                async(function () {
-                    this.next(async())
-                })
-                break
-            case 0:
-                return [ record, key, size ]
-            case 1:
-                return []
-            default:
-                throw new Error('invalid return from filter')
-            }
+Dilute.prototype.get = function () {
+    var item
+    while ((item = this._iterator.get()) != null) {
+        switch (this._filter(item)) {
+        case -1:
+            break
+        case 0:
+            return item
+        case 1:
+            this._done = true
+            return null
+        default:
+            throw new Error('invalid return from filter')
         }
-    })
-})
+    }
+    return null
+}
+
+Dilute.prototype.next = function (callback) {
+    if (this._done) {
+        callback(null, null)
+    }
+    this._iterator.next(callback)
+}
 
 Dilute.prototype.unlock = function (callback) {
     assert.ok(callback, 'unlock now requires a callback')

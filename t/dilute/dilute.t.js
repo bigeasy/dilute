@@ -1,13 +1,13 @@
-require('proof')(3, require('cadence/redux')(prove))
+require('proof')(1, require('cadence/redux')(prove))
 
 function prove (async, assert) {
+    var advance = require('advance')
     var values = [ 0, 1, 2, 3, 5, 6, 7 ], records = [], keys = [], sizes = []
-    var iterator = require('advance')(values, function (record, callback) {
-        callback(null, record, record, 5)
-    })
-    var filter = require('../..')(iterator, function (key) {
-        if (key == 7) return 1
-        if (key % 2 == 0) return -1
+    var iterator = advance(values)
+
+    var filter = require('../..')(iterator, function (item) {
+        if (item == 7) return 1
+        if (item % 2 == 0) return -1
         return 0
     })
     async([function () {
@@ -15,19 +15,18 @@ function prove (async, assert) {
     }], function () {
         var loop = async(function () {
             filter.next(async())
-        }, function (record, key, size) {
-            if (record && key) {
-                records.push(record)
-                keys.push(key)
-                sizes.push(size)
+        }, function (more) {
+            if (more) {
+                var item
+                while (item = filter.get()) {
+                    records.push(item)
+                }
             } else {
                 return [ loop ]
             }
         })()
     }, function () {
         assert(records, [ 1, 3, 5 ], 'records')
-        assert(keys, [ 1, 3, 5 ], 'keys')
-        assert(sizes, [ 5, 5, 5 ], 'sizes')
         iterator.unlock(async())
     })
 }
