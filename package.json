@@ -29,7 +29,7 @@
     "devDependencies":
     {
                         "proof":              "0.0.51",
-                        "advance":            "0.0.11"
+                        "advance":            "0.0.13"
     },
     "scripts":
     {
