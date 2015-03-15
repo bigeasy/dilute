@@ -2,7 +2,7 @@ require('proof')(1, require('cadence/redux')(prove))
 
 function prove (async, assert) {
     var values = [ 0, 1, 2, 3, 5, 6, 7 ], records = [], keys = [], sizes = []
-    var iterator = require('advance')(values)
+    var iterator = require('advance').forward(values)
     var filter = require('../..')(iterator, function (item) {
         if (item % 2 == 0) return -1
         return 0
