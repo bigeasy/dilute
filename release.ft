@@ -8,6 +8,7 @@ Advance is only used in testing, but it was an old version without the asynchron
 
 ### Issue by Issue
 
+ * Upgrade Advance to 0.0.14. #52.
  * Upgrade Advance to 0.0.13. #49.
  * Implement new `get` interface. #47.
  * Upgrade Cadence to 0.0.52. #46.
