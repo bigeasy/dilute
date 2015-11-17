@@ -1,4 +1,4 @@
-require('proof')(1, require('cadence/redux')(prove))
+require('proof')(1, require('cadence')(prove))
 
 function prove (async, assert) {
     var advance = require('advance')
@@ -22,7 +22,7 @@ function prove (async, assert) {
                     records.push(item)
                 }
             } else {
-                return [ loop ]
+                return [ loop.break ]
             }
         })()
     }, function () {

@@ -1,4 +1,4 @@
-var cadence = require('cadence/redux'),
+var cadence = require('cadence'),
     assert = require('assert')
 
 function Dilute (iterator, filter) {
