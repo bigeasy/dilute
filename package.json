@@ -1,34 +1,33 @@
 {
-    "name":             "dilute",
-    "version":          "1.0.0",
-    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
-    "description":      "A Strata MVCC iterator that filters the results of a Strata MVCC iterator.",
+    "name":                 "dilute",
+    "version":              "1.0.0",
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "description":          "A Strata MVCC iterator that filters the results of a Strata MVCC iterator.",
     "keywords":
     [
-                        "btree", "leveldb", "levelup", "binary", "mvcc",
-                        "database", "json", "b-tree", "concurrent", "persistence"
+                            "btree", "leveldb", "levelup", "binary", "mvcc",
+                            "database", "json", "b-tree", "concurrent", "persistence"
     ],
-    "contributors":     [],
-    "homepage":         "https://github.com/bigeasy/dilute",
-    "bugs":             "https://github.com/bigeasy/dilute/issues",
-    "license":          "MIT",
-    "main":             "dilute",
+    "homepage":             "https://github.com/bigeasy/dilute",
+    "bugs":                 "https://github.com/bigeasy/dilute/issues",
+    "license":              "MIT",
+    "main":                 "dilute",
     "repository":
     {
-                        "type": "git",
-                        "url": "http://github.com/bigeasy/dilute.git"
+                            "type": "git",
+                            "url": "http://github.com/bigeasy/dilute.git"
     },
     "dependencies":
     {
-                        "cadence":            "1.x"
+                            "cadence":                      "1.x"
     },
     "devDependencies":
     {
-                        "advance":            "1.x",
-                        "proof":              "1.x"
+                            "advance":                      "1.x",
+                            "proof":                        "1.x"
     },
     "scripts":
     {
-                        "test": "proof platform win32 && proof test */*/*.t.js || t/test"
+                            "test": "proof platform win32 && proof test */*/*.t.js || t/test"
     }
 }
