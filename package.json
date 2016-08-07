@@ -1,17 +1,19 @@
 {
     "name":                 "dilute",
     "version":              "1.0.0",
-    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
-    "description":          "A Strata MVCC iterator that filters the results of a Strata MVCC iterator.",
+    "description":
+
+      "A Strata MVCC iterator that filters the results of a Strata MVCC iterator.",
+
     "keywords":
     [
                             "btree", "leveldb", "levelup", "binary", "mvcc",
                             "database", "json", "b-tree", "concurrent", "persistence"
     ],
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
     "homepage":             "https://github.com/bigeasy/dilute",
     "bugs":                 "https://github.com/bigeasy/dilute/issues",
     "license":              "MIT",
-    "main":                 "dilute",
     "repository":
     {
                             "type": "git",
@@ -26,6 +28,7 @@
                             "advance":                      "1.x",
                             "proof":                        "1.x"
     },
+    "main":                 "dilute",
     "scripts":
     {
                             "test": "proof platform win32 && proof test */*/*.t.js || t/test"
