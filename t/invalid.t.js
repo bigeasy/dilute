@@ -3,7 +3,7 @@ require('proof')(1, require('cadence')(prove))
 function prove (async, assert) {
     var values = [ 0 ]
     var iterator = require('advance').forward(null, values)
-    var filter = require('../..')(iterator, function () {})
+    var filter = require('..')(iterator, function () {})
     async([function () {
         filter.unlock(async())
     }], function () {

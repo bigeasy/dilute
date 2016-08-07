@@ -1,9 +1,12 @@
 require('proof')(1, require('cadence')(prove))
 
 function prove (async, assert) {
+    var advance = require('advance')
     var values = [ 0, 1, 2, 3, 5, 6, 7 ], records = [], keys = [], sizes = []
-    var iterator = require('advance').forward(null, values)
-    var filter = require('../..')(iterator, function (item) {
+    var iterator = advance.forward(null, values)
+
+    var filter = require('..')(iterator, function (item) {
+        if (item == 7) return 1
         if (item % 2 == 0) return -1
         return 0
     })
@@ -15,7 +18,7 @@ function prove (async, assert) {
         }, function (more) {
             if (more) {
                 var item
-                while ((item = filter.get()) != null) {
+                while (item = filter.get()) {
                     records.push(item)
                 }
             } else {
@@ -23,7 +26,7 @@ function prove (async, assert) {
             }
         })()
     }, function () {
-        assert(records, [ 1, 3, 5, 7 ], 'records')
+        assert(records, [ 1, 3, 5 ], 'records')
         iterator.unlock(async())
     })
 }
