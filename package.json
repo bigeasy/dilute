@@ -26,7 +26,7 @@
     "devDependencies":
     {
                             "advance":                      "1.0.x",
-                            "proof":                        "1.0.x"
+                            "proof":                        "1.1.x"
     },
     "main":                 "dilute",
     "scripts":
