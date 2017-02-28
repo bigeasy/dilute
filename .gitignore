@@ -1,4 +1,5 @@
+/.wisegudy
+/docs
 /node_modules
 /.proof.out
 /coverage
-/t/tmp
