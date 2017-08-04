@@ -1,4 +1,4 @@
-require('proof/redux')(1, require('cadence')(prove))
+require('proof')(1, require('cadence')(prove))
 
 function prove (async, assert) {
     var values = [ 0, 1, 2, 3, 5, 6, 7 ], records = [], keys = [], sizes = []
