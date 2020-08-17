@@ -1,42 +1,58 @@
-var cadence = require('cadence'),
-    assert = require('assert')
+class Dilute {
+    constructor (iterable, filter) {
+        this._iterator = iterable[Symbol.asyncIterator]()
+        this._filter = filter
+        this._done = false
+    }
 
-function Dilute (iterator, filter) {
-    this._iterator = iterator
-    this._filter = filter
-    this._done = false
-}
+    [Symbol.asyncIterator] () {
+        return this
+    }
 
-Dilute.prototype.get = function () {
-    var item
-    while ((item = this._iterator.get()) != null) {
-        switch (this._filter(item)) {
-        case -1:
-            break
-        case 0:
-            return item
-        case 1:
-            this._done = true
-            return null
-        default:
-            throw new Error('invalid return from filter')
+    async next () {
+        if (this._done) {
+            this['return']()
+            return { done: true }
+        }
+        const next = this._iterator.next()
+        if (next.done) {
+            return { done: true }
+        }
+        const iterator = next.value[Symbol.iterator]()
+        return {
+            done: false,
+            value: {
+                [Symbol.iterator]: () => {
+                    return {
+                        next: () => {
+                            for (;;) {
+                                const next = iterator.next()
+                                if (next.done) {
+                                    return { done: true }
+                                }
+                                switch (this._filter(next.value)) {
+                                case -1:
+                                    break
+                                case 0:
+                                    return {
+                                        done: false,
+                                        value: next.value
+                                    }
+                                case 1:
+                                    this._done = true
+                                    return { done: true }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
-    return null
-}
 
-Dilute.prototype.next = function (callback) {
-    if (this._done) {
-        callback(null, null)
+    return () {
+        return this._iterator['return']()
     }
-    this._iterator.next(callback)
 }
 
-Dilute.prototype.unlock = function (callback) {
-    assert.ok(callback, 'unlock now requires a callback')
-    this._iterator.unlock(callback)
-}
-
-module.exports = function (iterator, filter) {
-    return new Dilute(iterator, filter)
-}
+module.exports = Dilute
