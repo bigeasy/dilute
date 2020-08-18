@@ -1,10 +1,10 @@
 require('proof')(2, async okay => {
-    const Dilute = require('..')
+    const dilute = require('..')
     const values = [ 0, 1, 2, 3, 5, 6, 7, 8, 9 ]
 
     {
         const next = [ { value: values, done: false }, { done: true } ]
-        const dilute = new Dilute({
+        const dilution = dilute({
             [Symbol.asyncIterator]: function () { return this },
             next: function () {
                 return next.shift()
@@ -18,7 +18,7 @@ require('proof')(2, async okay => {
 
         const gather = []
 
-        for await (const got of dilute) {
+        for await (const got of dilution) {
             for (const item of got) {
                 gather.push(item)
             }
@@ -29,7 +29,7 @@ require('proof')(2, async okay => {
 
     {
         const next = [ { value: values, done: false }, { done: true } ]
-        const dilute = new Dilute({
+        const dilution = dilute({
             [Symbol.asyncIterator]: function () { return this },
             next: function () {
                 return next.shift()
@@ -42,7 +42,7 @@ require('proof')(2, async okay => {
 
         const gather = []
 
-        for await (const got of dilute) {
+        for await (const got of dilution) {
             for (const item of got) {
                 gather.push(item)
             }
