@@ -1,6 +1,6 @@
 class Dilute {
-    constructor (iterable, filter) {
-        this._iterator = iterable[Symbol.asyncIterator]()
+    constructor (paginator, filter) {
+        this._paginator = paginator[Symbol.asyncIterator]()
         this._filter = filter
         this._done = false
     }
@@ -14,44 +14,28 @@ class Dilute {
             this['return']()
             return { done: true }
         }
-        const next = this._iterator.next()
+        const next = this._paginator.next()
         if (next.done) {
             return { done: true }
         }
-        const iterator = next.value[Symbol.iterator]()
-        return {
-            done: false,
-            value: {
-                [Symbol.iterator]: () => {
-                    return {
-                        next: () => {
-                            for (;;) {
-                                const next = iterator.next()
-                                if (next.done) {
-                                    return { done: true }
-                                }
-                                switch (this._filter(next.value)) {
-                                case -1:
-                                    break
-                                case 0:
-                                    return {
-                                        done: false,
-                                        value: next.value
-                                    }
-                                case 1:
-                                    this._done = true
-                                    return { done: true }
-                                }
-                            }
-                        }
-                    }
-                }
+        const gathered = []
+        ITEMS: for (const item of next.value) {
+            switch (this._filter(item)) {
+            case -1:
+                break
+            case 0:
+                gathered.push(item)
+                break
+            case 1:
+                this._done = true
+                break ITEMS
             }
         }
+        return { done: false, value: gathered }
     }
 
     return () {
-        return this._iterator['return']()
+        return this._paginator['return']()
     }
 }
 
