@@ -11,7 +11,7 @@ module.exports = function (paginator, filter) {
             if (done) {
                 return { done: true }
             }
-            const next = iterator.next()
+            const next = await iterator.next()
             if (next.done) {
                 return { done: true }
             }
