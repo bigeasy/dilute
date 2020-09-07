@@ -9,11 +9,11 @@ module.exports = function (paginator, filter) {
         },
         next: async function () {
             if (done) {
-                return { done: true }
+                return { done: true, value: null }
             }
             const next = await iterator.next()
             if (next.done) {
-                return { done: true }
+                return { done: true, value: null }
             }
             const gathered = []
             ITEMS: for (const item of next.value) {
