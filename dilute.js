@@ -18,12 +18,12 @@ module.exports = function (paginator, filter) {
             const gathered = []
             ITEMS: for (const item of next.value) {
                 switch (filter(item)) {
-                case -1:
-                    break
                 case 0:
-                    gathered.push(item)
                     break
                 case 1:
+                    gathered.push(item)
+                    break
+                case -1:
                     done = true
                     break ITEMS
                 }

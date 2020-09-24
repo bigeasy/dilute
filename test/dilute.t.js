@@ -11,9 +11,9 @@ require('proof')(2, async okay => {
             },
             return: () => {}
         }, item => {
-            if (item == 7) return 1
-            if (item % 2 == 0) return -1
-            return 0
+            if (item == 7) return -1
+            if (item % 2 == 0) return 0
+            return 1
         })
 
         const gather = []
@@ -36,8 +36,8 @@ require('proof')(2, async okay => {
             },
             return: () => {}
         }, item => {
-            if (item % 2 == 0) return -1
-            return 0
+            if (item % 2 == 0) return 0
+            return 1
         })
 
         const gather = []
