@@ -1,6 +1,6 @@
 {
     "name":                 "dilute",
-    "version":              "2.0.0-alpha.4",
+    "version":              "2.0.0-alpha.5",
     "description":
 
       "A Strata MVCC iterator that filters the results of a Strata MVCC iterator.",
