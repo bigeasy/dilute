@@ -1,26 +1,24 @@
 require('proof')(2, async okay => {
     const dilute = require('..')
+    const advance = require('advance')
     const values = [ 0, 1, 2, 3, 5, 6, 7, 8, 9 ]
 
     {
-        const next = [ { value: values, done: false }, { done: true } ]
-        const dilution = dilute({
-            [Symbol.asyncIterator]: function () { return this },
-            next: function () {
-                return next.shift()
-            },
-            return: () => {}
-        }, item => {
+        const iterator = dilute(advance.forward([ values ]), item => {
             if (item == 7) return -1
             if (item % 2 == 0) return 0
             return 1
         })
 
-        const gather = []
-
-        for await (const got of dilution) {
-            for (const item of got) {
-                gather.push(item)
+        const gather = [], promises = []
+        while (! iterator.done) {
+            iterator.next(promises, items => {
+                for (const item of items) {
+                    gather.push(item)
+                }
+            })
+            while (promises.length != 0) {
+                await promises.shift()
             }
         }
 
@@ -28,23 +26,20 @@ require('proof')(2, async okay => {
     }
 
     {
-        const next = [ { value: values, done: false }, { done: true } ]
-        const dilution = dilute({
-            [Symbol.asyncIterator]: function () { return this },
-            next: function () {
-                return next.shift()
-            },
-            return: () => {}
-        }, item => {
+        const iterator = dilute(advance.forward([ values ]), item => {
             if (item % 2 == 0) return 0
             return 1
         })
 
-        const gather = []
-
-        for await (const got of dilution) {
-            for (const item of got) {
-                gather.push(item)
+        const gather = [], promises = []
+        while (! iterator.done) {
+            iterator.next(promises, items => {
+                for (const item of items) {
+                    gather.push(item)
+                }
+            })
+            while (promises.length != 0) {
+                await promises.shift()
             }
         }
 

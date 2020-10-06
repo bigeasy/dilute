@@ -1,4 +1,4 @@
-module.exports = function (undiluted, filter) {
+module.exports = function (promises, undiluted, filter) {
     let done = false
     const iterator = {
         done: false,
