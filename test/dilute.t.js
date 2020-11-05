@@ -4,7 +4,7 @@ require('proof')(2, async okay => {
     const values = [ 0, 1, 2, 3, 5, 6, 7, 8, 9 ]
 
     {
-        const iterator = dilute(advance.forward([ values ]), item => {
+        const iterator = dilute(advance([ values ]), item => {
             if (item == 7) return -1
             if (item % 2 == 0) return 0
             return 1
@@ -26,7 +26,7 @@ require('proof')(2, async okay => {
     }
 
     {
-        const iterator = dilute(advance.forward([ values ]), item => {
+        const iterator = dilute(advance([ values ]), item => {
             if (item % 2 == 0) return 0
             return 1
         })

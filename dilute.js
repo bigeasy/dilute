@@ -1,12 +1,13 @@
-module.exports = function (undiluted, filter) {
+module.exports = function (source, filter) {
     let done = false
     const iterator = {
         done: false,
+        type: source.type,
         next (promises, consumer, terminator = iterator) {
             if (done) {
                 terminator.done = true
             } else {
-                undiluted.next(promises, items => {
+                source.next(promises, items => {
                     const gathered = []
                     ITEMS: for (const item of items) {
                         switch (filter(item)) {
